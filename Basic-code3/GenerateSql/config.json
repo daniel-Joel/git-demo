@@ -1,0 +1,133 @@
+{
+  "aepOverwrite": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/overwriteSqlNew.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "asset_t_",
+    "sinkTablePre": "dwd_asset_lifecycle_",
+    "extendedInfo": {
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "modify_at"
+    },
+    "timeZoneConfig": {
+      "enable": "true",
+      "timeZone": "-8"
+    }
+  },
+  "aepMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/mergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "n9e_",
+    "sinkTablePre": "dwd_nightingale_",
+    "extendedInfo": {
+      "primaryKey": "id",
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "update_at desc",
+      "updateColumn": "update_at"
+    },
+    "timeZoneConfig": {
+      "enable": "false",
+      "timeZone": "-8"
+    }
+  },
+  "hiveMetaMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/hiveMergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "ods_hivemeta_",
+    "sinkTablePre": "dim_hivemeta_",
+    "extendedInfo": {
+      "primaryKey": "_id",
+      "RowNumBerPartitionByList": "_id,date(insert_time)",
+      "RowNumBerOrderByList": "insert_time desc",
+      "updateColumn": "insert_time"
+    },
+    "timeZoneConfig": {
+      "enable": "false",
+      "timeZone": "-8"
+    }
+  },
+  "asset_data_factoryMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/mergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "asset_data_factory_",
+    "sinkTablePre": "dwd_asset_data_factory_",
+    "extendedInfo": {
+      "primaryKey": "id",
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "updated_at desc",
+      "updateColumn": "updated_at"
+    },
+    "timeZoneConfig": {
+      "enable": "true",
+      "timeZone": "-8"
+    }
+  },
+  "assetMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/mergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "data_collection_t_",
+    "sinkTablePre": "dwd_collection_",
+    "extendedInfo": {
+      "primaryKey": "id",
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "updated_at desc",
+      "updateColumn": "updated_at"
+    },
+    "timeZoneConfig": {
+      "enable": "true",
+      "timeZone": "-8"
+    }
+  },
+  "quickBiMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/mergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "quickbi_",
+    "sinkTablePre": "dwd_quickbi_",
+    "extendedInfo": {
+      "primaryKey": "id",
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "gmt_modified desc",
+      "updateColumn": "gmt_modified"
+    },
+    "timeZoneConfig": {
+      "enable": "true",
+      "timeZone": "-8"
+    }
+  },
+  "annotationMerge": {
+    "engineType": "SparkSQL",
+    "filePath": "exeFile/",
+    "templatePath": "template/mergeSql.txt",
+    "sourceDbName": "iceberg.dataware",
+    "sinkDbName": "iceberg.dataware",
+    "sourceTablePre": "calculate_t_",
+    "sinkTablePre": "dwd_calculate_",
+    "extendedInfo": {
+      "primaryKey": "id",
+      "RowNumBerPartitionByList": "id",
+      "RowNumBerOrderByList": "updated_at desc",
+      "updateColumn": "updated_at"
+    },
+    "timeZoneConfig": {
+      "enable": "true",
+      "timeZone": "-8"
+    }
+  }
+}

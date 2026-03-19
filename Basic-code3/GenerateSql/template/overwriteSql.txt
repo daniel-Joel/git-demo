@@ -1,0 +1,16 @@
+insert overwrite table ${sinkDbName}.${sinkTable}
+select
+     ${columns}
+from
+    (
+        select
+             ${columns}
+            , cast('${etl_date}' as date) as etl_date
+            , now()  as update_date
+            , "jianfeng.dong" as update_user
+            ,row_number()over(partition by ${RowNumBerPartitionByList} order by ${RowNumBerOrderByList} ,_dispatcher_processed_timestamp desc) as rn
+        from
+            ${sourceDbName}.${sourceTable}
+    ) as k
+where
+    rn = 1;

@@ -1,0 +1,7 @@
+id Int32
+product_metric_scene String
+product_metric_key String
+perception_metric_scene String
+perception_metric_key String
+created_by String
+create_at DateTime
