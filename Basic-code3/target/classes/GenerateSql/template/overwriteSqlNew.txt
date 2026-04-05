@@ -1,0 +1,8 @@
+insert overwrite table ${sinkDbName}.${sinkTable}
+SELECT
+     ${columns}
+    , CAST('${etl_date}' AS DATE) AS etl_date
+    , now()  AS update_date
+    , "harry.wei" AS update_user
+FROM
+    ${sourceDbName}.${sourceTable}

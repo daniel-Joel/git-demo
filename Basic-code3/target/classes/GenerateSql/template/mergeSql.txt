@@ -1,0 +1,23 @@
+merge into ${sinkDbName}.${sinkTable} d
+using (
+    select
+          ${columns}
+        , cast('${etl_date}' as date) as etl_date
+        , now()  as update_date
+        , "jianfeng.dong" as update_user
+    from
+        (
+            select
+                 ${columns}
+                , row_number() over (partition by ${RowNumBerPartitionByList} order by ${RowNumBerOrderByList}  desc) as rn
+            from
+                ${sourceDbName}.${sourceTable}
+            -- where
+               -- ${updateColumn} - interval 8 hours between '${lower_boundary} 00:00:00' and '${upper_boundary} 00:00:00' -- $[yyyy-mm-dd-3]   $[yyyy-mm-dd+1]
+        ) t
+    where
+        rn = 1
+) s
+on d.${primaryKey} = s.${primaryKey}
+when matched and d.${updateColumn} < s.${updateColumn} then update set *
+when not matched then insert *;

@@ -1,4 +1,4 @@
-// engineType     : 引擎类型,默认SparkSQL
+package GenerateSql.venv;// engineType     : 引擎类型,默认SparkSQL
 // filePath       : 待处理文件 =》 metro-AepMergeConfig-generator 处理完毕的 txt文件目录
 // templatePath   : 模板文件路径
 // sourceDbName   : 源头库名称

@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Test1 {
     public static void main(String[] args) throws IOException {
-        String path = "JsonFiles/Result_1.xlsx";
+        String path = "C:\\java_learning\\java_projects\\git-demo\\Basic-code3\\JsonFiles\\Result_1.xlsx";
         // 创建文件输入流，用于读取 Excel 文件的二进制数据；
         InputStream inputStream = new FileInputStream(path);
         // Apache POI 库的核心接口，用于统一处理 Excel 文件（兼容 xls/xlsx）；
