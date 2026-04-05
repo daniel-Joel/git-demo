@@ -1,3 +1,7 @@
+package GenerateSql.venv;
+
+import cn.hutool.core.io.FileUtil;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,8 +46,8 @@ public class Test {
         // 示例配置
         Config config = new Config();
         config.setEngineType("SparkSQL");
-        config.setFilePath("./GenerateSql/exeFils");           // 相对路径
-        config.setTemplatePath("./GenerateSql/template/overwriteSql.txt");
+        config.setFilePath("C:\\java_learning\\java_projects\\git-demo\\Basic-code3\\GenerateSql\\exeFile");           // 相对路径
+        config.setTemplatePath("C:\\java_learning\\java_projects\\git-demo\\Basic-code3\\GenerateSql\\template\\overwriteSql.txt");
         config.setSourceDbName("iceberg.dataware");
         config.setSinkDbName("iceberg.dataware");
         config.setSourceTablePre("autotest_");
@@ -81,7 +85,7 @@ public class Test {
                     .collect(Collectors.toList());
 
             // 获取模板信息
-            String template = FileUtil.getFile(templatePath);
+            String template = FileUtil.getFileVisitOption(templatePath.isEmpty()).toString();
 
             // 如果需要进行时区处理则将最外层columns 替换为columnsAddTimeZone
             String processedTemplate = template;

@@ -1,3 +1,4 @@
+package GenerateSql.venv;
 
 public class TimeZoneConfig {
     private boolean enable;

@@ -1,3 +1,7 @@
+package GenerateSql.venv;
+
+import cn.hutool.core.io.FileUtil;
+import GenerateSql.Util.MyFileUtil;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -162,7 +166,7 @@ public class SqlGenerator {
                     .collect(Collectors.toList());
 
             // 获取模板信息
-            String template = FileUtil.getFile(templatePath);
+            String template = MyFileUtil.getFile(templatePath);
 
             // 如果需要进行时区处理则将最外层columns 替换为columnsAddTimeZone
             String processedTemplate = template;
@@ -223,8 +227,8 @@ public class SqlGenerator {
         // 示例配置
         Config config = new Config();
         config.setEngineType("SparkSQL");
-        config.setFilePath("./GenerateSql/exeFile");           // 相对路径
-        config.setTemplatePath("./GenerateSql/template/overwriteSql.txt");
+        config.setFilePath("C:\\java_learning\\java_projects\\git-demo\\Basic-code3\\GenerateSql\\exeFile");           // 相对路径
+        config.setTemplatePath("C:\\java_learning\\java_projects\\git-demo\\Basic-code3\\GenerateSql\\template\\overwriteSql.txt");
         config.setSourceDbName("iceberg.dataware");
         config.setSinkDbName("iceberg.dataware");
         config.setSourceTablePre("autotest_");
